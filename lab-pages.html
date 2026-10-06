@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>专题实战 1 · 用 GitHub Pages 免费建一个网站 —— GitHub 新手村</title>
+<meta name="description" content="手把手教你用 GitHub Pages 把仓库变成一个真正的网站：准备 index.html、开启 Pages、访问你的专属网址、更新内容，以及 404 等常见问题解决。" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%23fff' d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z'/></svg>" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg height="26" viewBox="0 0 16 16" width="26" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+      GitHub 新手村
+    </a>
+    <div class="nav-links">
+      <a href="index.html">🏠 主页</a>
+      <a href="#prepare">准备</a>
+      <a href="#enable">开启 Pages</a>
+      <a href="#update">更新网站</a>
+      <a href="#pages-faq">常见问题</a>
+      <a href="lab-first-pr.html">下一个实战 →</a>
+      <a href="ai-tools.html">AI 编程工具</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="crumbs"><a href="index.html">主页</a><span class="sep">/</span>专题实战 1</div>
+  <h1>🌐 用 GitHub Pages 免费建一个网站</h1>
+  <p class="sub">
+    你在教程里建的那个仓库，其实可以变成一个全世界都能访问的真正网站——
+    不用买服务器、不用花一分钱。跟着做，10 分钟搞定。
+  </p>
+  <span class="req">✅ 前置要求：已完成主页教程第 1~4 步（有账号、会建仓库、会上传文件）</span>
+</header>
+
+<section class="block" id="prepare">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Step 1</span>
+      <h2>准备一个带 <code>index.html</code> 的仓库</h2>
+      <p>GitHub Pages 的规矩很简单：访问你的网址时，它会把仓库里的 <code>index.html</code> 当作首页展示。所以第一步，仓库里必须有这个文件。</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#238636,#3fb950)">A</div>
+        <div class="step-card">
+          <h3>新建仓库或复用旧的</h3>
+          <p>可以复用 <code>hello-github</code>，但更推荐新建一个专门当网站的仓库，名字建议叫 <code>my-website</code>（Public 公开）。</p>
+          <div class="tip blue">💡 小知识：如果你把仓库名取成 <code>你的用户名.github.io</code>，这个仓库就会直接变成你的个人主站，网址更短更帅。</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#1f6feb,#58a6ff)">B</div>
+        <div class="step-card">
+          <h3>新建 index.html 文件</h3>
+          <p>在仓库页点 <b>Add file → Create new file</b>，文件名输入 <code>index.html</code>，粘贴下面这段最简网页代码：</p>
+          <div class="code">
+            <div class="code-title"><span>index.html · 你的第一个网页</span></div>
+            <pre>&lt;!DOCTYPE <span class="kw">html</span>&gt;
+<span class="kw">&lt;html</span> <span class="ar">lang=</span><span class="st">"zh-CN"</span><span class="kw">&gt;</span>
+<span class="kw">&lt;head&gt;</span>
+  <span class="kw">&lt;meta</span> <span class="ar">charset=</span><span class="st">"UTF-8"</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;title&gt;</span>我的第一个网站<span class="kw">&lt;/title&gt;</span>
+<span class="kw">&lt;/head&gt;</span>
+<span class="kw">&lt;body&gt;</span>
+  <span class="kw">&lt;h1&gt;</span>你好，世界！👋<span class="kw">&lt;/h1&gt;</span>
+  <span class="kw">&lt;p&gt;</span>这是我用 GitHub Pages 建的网站。<span class="kw">&lt;/p&gt;</span>
+<span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span></pre>
+          </div>
+          <p>拉到最下面，写个提交说明（如 <code>创建首页</code>），点 <b>Commit changes</b>。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="enable">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Step 2</span>
+      <h2>开启 Pages：一开关，网站就上线</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#8957e5,#bc8cff)">A</div>
+        <div class="step-card">
+          <h3>进入设置页面</h3>
+          <ol>
+            <li>在仓库页顶部点 <b>⚙️ Settings</b>（设置）</li>
+            <li>左侧菜单找到 <b>Pages</b>（在 "Code and automation" 分组下）</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#bb8009,#d29922)">B</div>
+        <div class="step-card">
+          <h3>选择发布来源</h3>
+          <ol>
+            <li>在 <b>Branch</b> 区域，第一个下拉框选 <code>main</code>，第二个保持 <code>/ (root)</code></li>
+            <li>点旁边的 <b>Save</b> 按钮</li>
+          </ol>
+          <div class="tip blue">💡 这句话的意思是："请把 main 分支根目录下的文件作为网站内容发布。"</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#db61a2,#f778ba)">C</div>
+        <div class="step-card">
+          <h3>等待部署，拿到网址 🎉</h3>
+          <ol>
+            <li>刷新页面，等 1~2 分钟，顶部会出现一个绿色提示框，里面有你的网址：<br /><code>https://你的用户名.github.io/my-website/</code></li>
+            <li>点开链接——你的网站上线了！把它发给朋友吧。</li>
+          </ol>
+          <div class="tip green">✅ 从此你拥有了一个永久免费、全球可访问的网站。所有静态网页（HTML/CSS/JS）都能这样托管。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="update">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Step 3</span>
+      <h2>以后怎么更新网站？</h2>
+      <p>流程就是主页教程第 4 步的重复：<b>编辑文件 → 写提交说明 → Commit</b>。GitHub 会自动检测到新提交并重新发布，通常 1 分钟内生效。</p>
+    </div>
+    <div class="vs-grid">
+      <div class="vs-card">
+        <h3>🔁 更新流程</h3>
+        <p class="tag">每次修改都重复这三步</p>
+        <ul>
+          <li>打开要改的文件，点 ✏️ 铅笔编辑</li>
+          <li>写提交说明，点 Commit changes</li>
+          <li>等 1 分钟，浏览器按 <b>Ctrl + F5</b> 强制刷新看效果</li>
+        </ul>
+      </div>
+      <div class="vs-mid">→</div>
+      <div class="vs-card">
+        <h3>🚀 进阶方向</h3>
+        <p class="tag">不满足于一个页面之后</p>
+        <ul>
+          <li>加 CSS 文件美化样式（如 <code>style.css</code>）</li>
+          <li>去网上找免费 HTML 模板，上传替换</li>
+          <li>用 Jekyll 主题写博客，或绑定自己的域名</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="pages-faq">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">疑难解答</span>
+      <h2>Pages 常见问题</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>打开网址是 404？</summary>
+        <div class="faq-a">按顺序检查：① 仓库里确实有名为 <code>index.html</code> 的文件（注意全小写，不能叫 Index.html）；② 刚点完 Save 的话再等 1~2 分钟；③ Settings → Pages 里 Branch 是否选了 <code>main</code> 并保存成功；④ 仓库是否为 Public（免费账号的私有仓库不能开 Pages）。</div>
+      </details>
+      <details>
+        <summary>改了文件，网站上却没变化？</summary>
+        <div class="faq-a">两件事：① 部署需要约 1 分钟，可以去仓库的 <b>Actions</b> 标签页看 "pages build and deployment" 是否打勾完成；② 浏览器缓存了旧页面，按 <b>Ctrl + F5</b>（Mac：Cmd + Shift + R）强制刷新。</div>
+      </details>
+      <details>
+        <summary>私有仓库可以做网站吗？</summary>
+        <div class="faq-a">免费（Free）账号不行，Pages 需要 Public 公开仓库。升级 Pro 或通过学生认证后，私有仓库也能开 Pages。对新手来说，直接用公开仓库就好。</div>
+      </details>
+      <details>
+        <summary>网址能换成我自己的域名吗？</summary>
+        <div class="faq-a">可以。在 Settings → Pages 的 <b>Custom domain</b> 里填入你购买的域名（如 <code>www.example.com</code>），再回到域名服务商处添加一条 CNAME 解析记录指向 <code>你的用户名.github.io</code>。具体步骤官方文档（docs.github.com 搜 "Custom domain"）写得很细。</div>
+      </details>
+      <details>
+        <summary>会被百度/谷歌搜到吗？</summary>
+        <div class="faq-a">会，但新站需要时间被收录。想加快的话，可以在仓库根目录添加 <code>sitemap.xml</code>，并在谷歌 Search Console 提交网址。这属于进阶玩法，初期不用急。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="pager">
+  <a href="index.html">
+    <div class="dir">← 返回</div>
+    <div class="t">GitHub 新手村主页</div>
+  </a>
+  <a class="next" href="lab-first-pr.html">
+    <div class="dir">下一个实战 →</div>
+    <div class="t">提交你人生第一个 PR</div>
+  </a>
+</div>
+
+<footer>
+  <p>🌐 你的网站已经上线，接下来就随心打扮它吧！</p>
+  <p>用 <span class="heart">❤</span> 制作 · 界面以 GitHub 官方为准</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

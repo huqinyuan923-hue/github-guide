@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GitHub 新手村完全指南 —— 从零开始认识 GitHub</title>
+<meta name="description" content="写给完全零基础小白的 GitHub 入门教程：GitHub 是什么、核心概念比喻讲解、功能地图、手把手注册与创建第一个仓库、常用术语表和常见问题。" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%23fff' d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z'/></svg>" />
+</head>
+<body>
+
+<!-- ============ 导航 ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <svg height="26" viewBox="0 0 16 16" width="26" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+      GitHub 新手村
+    </a>
+    <div class="nav-links">
+      <a href="#what">是什么</a>
+      <a href="#concepts">核心概念</a>
+      <a href="#features">功能地图</a>
+      <a href="#tutorial">新手教程</a>
+      <a href="lab-pages.html">Pages 建站</a>
+      <a href="lab-first-pr.html">首个 PR</a>
+      <a href="ai-tools.html">AI 编程工具</a>
+      <a href="#glossary">术语表</a>
+      <a href="#faq">常见问题</a>
+      <a href="#resources">学习资源</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ Hero ============ -->
+<header class="hero" id="top">
+  <div class="hero-badge">🐣 完全零基础也能看懂 · 全程使用"生活比喻"</div>
+  <h1>GitHub 新手村<br /><span class="accent">完全指南</span></h1>
+  <p class="sub">
+    听说过 GitHub 但完全不知道它是干嘛的？别慌，这份指南就是为你准备的。
+    我们不堆术语，用最直白的话讲清楚：<span class="accent-green">GitHub 是什么、能干什么、怎么一步步用起来</span>。
+  </p>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="#tutorial">🚀 直接开始上手教程</a>
+    <a class="btn btn-ghost" href="#what">先看看 GitHub 是什么</a>
+  </div>
+  <p class="hero-meta">预计阅读时间 <span>约 15 分钟</span> · 无需任何编程基础 · 全部操作在浏览器里完成</p>
+</header>
+
+<!-- ============ 是什么 ============ -->
+<section class="block" id="what">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 1 · 先搞懂它</span>
+      <h2>GitHub 到底是什么？</h2>
+      <p>一句话：GitHub 是全球程序员放代码、管代码、一起写代码的平台，堪称"程序员的社交网络 + 云端仓库"。上面托管着超过 4 亿个项目，包括很多你每天都在用的软件。</p>
+    </div>
+
+    <div class="vs-grid">
+      <div class="vs-card">
+        <h3>📦 Git</h3>
+        <p class="tag">一个工具软件（先有它）</p>
+        <ul>
+          <li>装在你自己电脑上的<b>版本管理工具</b></li>
+          <li>像游戏存档：每改一版代码都能"存个档"，随时读回任何一版</li>
+          <li>不联网也能用，全在你本地</li>
+          <li>由 Linux 之父 Linus 在 2005 年创造</li>
+        </ul>
+      </div>
+      <div class="vs-mid">VS</div>
+      <div class="vs-card">
+        <h3>🌐 GitHub</h3>
+        <p class="tag">一个网站平台（后诞生）</p>
+        <ul>
+          <li>把这些"本地存档"上传到<b>云端</b>，换个电脑也不怕丢</li>
+          <li>像"代码界的网盘 + 朋友圈"：能看别人的项目、点Star收藏</li>
+          <li>核心价值是<b>多人协作</b>：几十人改同一个项目也不会乱</li>
+          <li>2018 年被微软收购，全球超过 1 亿开发者在使用</li>
+        </ul>
+      </div>
+    </div>
+    <div class="vs-note">
+      💡 <strong>小白只需记住：</strong>Git 是"工具"，GitHub 是"存放和分享成果的网站"。很多人混着说，其实你完全可以<b>先只用 GitHub 网站</b>（网页上点点鼠标就能玩转），以后再学 Git 命令也不迟——本教程就是这么安排的。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 核心概念 ============ -->
+<section class="block alt" id="concepts">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 2 · 核心概念</span>
+      <h2>10 个必懂概念，全部用比喻讲明白</h2>
+      <p>这些词你会在 GitHub 的每个角落看到。先混个眼熟，不用背，用到时回来查就行。</p>
+    </div>
+    <div class="concept-grid">
+      <div class="concept">
+        <div class="icon" style="background:rgba(88,166,255,.15)">📁</div>
+        <h3>仓库 <code>Repository / Repo</code></h3>
+        <p class="metaphor">比喻：一个项目的"专属文件夹"</p>
+        <p>一个仓库 = 一个项目的全部家当：代码、文档、修改历史都装在里面。可以是公开的（全世界的眼睛都能看），也可以是私有的（只有你自己和受邀的人能看）。</p>
+      </div>
+      <div class="concept">
+        <div class="icon" style="background:rgba(63,185,80,.15)">💾</div>
+        <h3>提交 <code>Commit</code></h3>
+        <p class="metaphor">比喻：游戏里的"存一次档"</p>
+        <p>每完成一小步改动，就做一次 Commit，并写一句说明（比如"修好了登录报错"）。它像快照一样被永久记录，以后随时能回到任何一次存档的状态，再也不怕"改崩了回不去"。</p>
+      </div>
+      <div class="concept">
+        <div class="icon" style="background:rgba(188,140,255,.15)">🌿</div>
+        <h3>分支 <code>Branch</code></h3>
+        <p class="metaphor">比喻：平行世界 / 草稿纸</p>
+        <p>默认主线叫 <code>main</code>。想大胆尝试新功能又怕搞坏主线？开一个分支（如 <code>feature-login</code>），在"平行世界"里随便折腾，稳了再合回去。就像写作业先打草稿，满意再誊到正式本上。</p>
+      </div>
+      <div class="concept">
+        <div class="icon" style="background:rgba(63,185,80,.15)">🔀</div>
+        <h3>拉取请求 <code>Pull Request / PR</code></h3>
+        <p class="metaphor">比喻：交作业请老师批改，通过后并入正本</p>
+        <p>你在分支上改完，就发起一个 PR："我改了这些，请审核，没问题就合并进主线吧。" 项目维护者会逐行看你的改动、提意见，这是开源世界合作的核心方式。</p>
+      </div>
+      <div class="concept">
+        <div class="icon" style="background:rgba(247,120,186,.15)">🍴</div>
+        <h3>复刻 <code>Fork</code></h3>
+        <p class="metaphor">比喻：把别人的菜谱完整抄一份到自己家</p>
+        <p>Fork 会把别人的仓库原样复制一份到你的账号下，你可以随便改而不影响原项目。改好了想"回馈原版"，就通过 PR 提交回去——这就是给开源项目贡献代码的路径。</p>
+      </div>
+      <div class="concept">
+        <div class="icon" style="background:rgba(240,136,62,.15)">⬇️</div>
+        <h3>克隆 <code>Clone</code></h3>
+        <p class="metaphor">比喻：把云端文件夹整个下载到电脑</p>
+        <p>Clone 是把 GitHub 上的仓库完整下载到本地（包含全部修改历史）。下载后你可以离线编辑，改完再"推（push）"回 GitHub 同步。小白阶段用网页版可以暂时不碰它。</p>
+      </div>
+      <div class="concept">
+        <div class="icon" style="background:rgba(210,153,34,.15)">⭐</div>
+        <h3>星标 <code>Star</code></h3>
+        <p class="metaphor">比喻：点赞 + 收藏夹二合一</p>
+        <p>觉得某个项目不错就点 Star：既是"赞"，也会把它收进你的 Star 列表方便以后找。Star 数是项目人气的直观体现，你也会经常看到"给个 Star 再走吧"。</p>
+      </div>
+      <div class="concept">
+        <div class="icon" style="background:rgba(248,81,73,.15)">🐛</div>
+        <h3>议题 <code>Issue</code></h3>
+        <p class="metaphor">比喻：项目的"留言板 + 待办清单"</p>
+        <p>发现软件有 Bug？想提新功能建议？就在仓库里开一个 Issue。它也是开发团队的任务管理板：每个问题一个编号（#123），解决后关闭。不会写代码也能在这里帮上忙。</p>
+      </div>
+      <div class="concept">
+        <div class="icon" style="background:rgba(88,166,255,.15)">📖</div>
+        <h3>自述文件 <code>README</code></h3>
+        <p class="metaphor">比喻：项目大门口的"说明书 / 招牌"</p>
+        <p>打开任何仓库首先看到的就是 README，它介绍这个项目是什么、怎么安装使用。写好 README 是新手的第一个练手任务——它用 Markdown 语法书写，比 Word 简单得多。</p>
+      </div>
+      <div class="concept">
+        <div class="icon" style="background:rgba(63,185,80,.15)">🤝</div>
+        <h3>合并 <code>Merge</code></h3>
+        <p class="metaphor">比喻：把草稿誊写进正式版本</p>
+        <p>PR 审核通过后，分支上的改动就"合并"进主分支，成为正式版本的一部分。如果两拨人改了同一处产生冲突（Conflict），GitHub 会提示你手动选择保留哪边。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 功能地图 ============ -->
+<section class="block" id="features">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 3 · 功能地图</span>
+      <h2>GitHub 上都有哪些功能？</h2>
+      <p>不用一次全学会。标 🟢 的是新手第一天就会用到的；🔵🟣 进阶后再解锁。</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--green)"></span>个人主页 Profile</h3>
+        <p>你的"代码朋友圈"头像页：展示项目、贡献记录（绿色小方格热力图）、Star 过的作品。</p>
+        <span class="lvl">🟢 新手必备</span>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--green)"></span>仓库托管</h3>
+        <p>核心功能。免费创建不限量的公开/私有仓库，放代码、文档、作业、甚至小说。</p>
+        <span class="lvl">🟢 新手必备</span>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--green)"></span>Explore / Trending</h3>
+        <p>"热门榜单"：看看今天全世界最火的项目是什么，找灵感、找学习资源的好地方。</p>
+        <span class="lvl">🟢 新手必备</span>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--green)"></span>Issue 议题区</h3>
+        <p>报告 Bug、提建议、参与讨论。很多开源项目靠 Issue 区组织协作和答疑。</p>
+        <span class="lvl">🟢 新手必备</span>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--blue)"></span>GitHub Pages</h3>
+        <p>免费网站托管！把网页代码放进仓库，一键获得一个 <code>xxx.github.io</code> 网址，做个人主页神器。</p>
+        <span class="lvl">🔵 稍进阶</span>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--blue)"></span>Fork &amp; Pull Request</h3>
+        <p>开源协作流水线：复制别人的项目 → 改进 → 提交合并申请 → 你的名字进入贡献者名单。</p>
+        <span class="lvl">🔵 稍进阶</span>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--purple)"></span>GitHub Actions</h3>
+        <p>自动化机器人：代码一提交就自动"测试、打包、发布"。相当于雇了个不知疲倦的流水线工人。</p>
+        <span class="lvl">🟣 进阶玩法</span>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--purple)"></span>GitHub Copilot</h3>
+        <p>AI 编程助手：根据注释和上下文自动补全代码。学生认证后可免费使用。</p>
+        <span class="lvl">🟣 进阶玩法</span>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--purple)"></span>Gist</h3>
+        <p>轻量代码片段分享：不想建整个仓库，只想分享一小段代码/笔记时用它。</p>
+        <span class="lvl">🟣 进阶玩法</span>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--purple)"></span>Projects 看板</h3>
+        <p>内置的"看板式"任务管理（类似 Trello），用表格/卡片安排项目进度。</p>
+        <span class="lvl">🟣 进阶玩法</span>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--purple)"></span>Discussions 讨论</h3>
+        <p>仓库自带的论坛，适合问答、公告、长篇讨论，比 Issue 更"聊天化"。</p>
+        <span class="lvl">🟣 进阶玩法</span>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--purple)"></span>Codespaces</h3>
+        <p>云端编程环境：打开浏览器就是一个装好工具的开发环境，低配电脑也能写代码。</p>
+        <span class="lvl">🟣 进阶玩法</span>
+      </div>
+    </div>
+
+    <!-- 模拟界面 -->
+    <div class="mock">
+      <div class="mock-bar">
+        <span class="cir" style="background:#ff5f57"></span>
+        <span class="cir" style="background:#febc2e"></span>
+        <span class="cir" style="background:#28c840"></span>
+        <span class="url">https://github.com/你的用户名/hello-github</span>
+      </div>
+      <div class="mock-body">
+        <div class="mock-repo-head">
+          <span class="name">你的用户名 / hello-github</span>
+          <span class="badge">Public 公开</span>
+          <span class="badge">⭐ Star</span>
+          <span class="badge">🍴 Fork</span>
+        </div>
+        <div class="mock-tabs">
+          <span class="on">📋 Code 代码</span><span>🐛 Issues 1</span><span>🔀 Pull requests</span><span>💬 Discussions</span><span>⚙️ Actions</span>
+        </div>
+        <div class="mock-file"><span class="ico">📄</span><b>README.md</b><span class="msg">我的第一个 README</span><span class="time">2 分钟前</span></div>
+        <div class="mock-file"><span class="ico">📄</span><b>index.html</b><span class="msg">添加了第一个网页</span><span class="time">5 分钟前</span></div>
+        <div class="mock-file"><span class="ico">📁</span><b>images/</b><span class="msg">上传截图</span><span class="time">8 分钟前</span></div>
+        <div class="callout-list">
+          <div class="co"><span class="n">1</span><span><b>仓库标签页</b>（Issues / Pull requests / Actions…）就是 Part 3 介绍的各个功能入口</span></div>
+          <div class="co"><span class="n">2</span><span><b>文件列表</b>每行后面那句灰色小字，就是最近一次 Commit 的说明</span></div>
+          <div class="co"><span class="n">3</span><span><b>README.md</b> 会自动显示在文件列表下方，相当于仓库的门面</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 教程 ============ -->
+<section class="block alt" id="tutorial">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 4 · 手把手教程</span>
+      <h2>8 步上手：今天就能拥有第一个仓库</h2>
+      <p>前 7 步只用浏览器，不需要装任何软件、不需要会写代码。跟着做，约 20 分钟完成。</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#238636,#3fb950)">1</div>
+        <div class="step-card">
+          <h3>注册账号 <span class="en">Sign up</span></h3>
+          <p>打开 <b>github.com</b>，点右上角 <b>Sign up</b>，依次填：邮箱 → 设置密码 → 起用户名 → 邮箱验证码。</p>
+          <ol>
+            <li><b>用户名</b>会出现在你的个人网址里（github.com/用户名），建议用英文小写+数字，好记且正式</li>
+            <li>选择 Free（免费）套餐即可，个人使用完全够</li>
+            <li>记得去邮箱点验证链接完成验证</li>
+          </ol>
+          <div class="tip green">✅ 小贴士：用户名起好后不要频繁更换，别人收藏的你的仓库链接会跟着变。</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#1f6feb,#58a6ff)">2</div>
+        <div class="step-card">
+          <h3>认一眼首页 <span class="en">Dashboard</span></h3>
+          <p>登录后看到的就是控制台。现在只需要认识三个地方：</p>
+          <ol>
+            <li>左上角 <b>新建仓库按钮</b>（New）—— 第 3 步要用</li>
+            <li>左侧栏 <b>Repositories</b> —— 你所有的仓库列表</li>
+            <li>右上角 <b>头像</b> —— 进个人主页、设置 Settings</li>
+          </ol>
+          <div class="tip blue">💡 页面是英文？点头像 → Settings → 最底部可能找到语言设置，或者装个浏览器翻译插件。不过建议趁早熟悉英文界面，因为所有教程截图都是英文的。</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#8957e5,#bc8cff)">3</div>
+        <div class="step-card">
+          <h3>创建第一个仓库 <span class="en">New Repository</span></h3>
+          <p>点 <b>New</b> 按钮，按下面填：</p>
+          <ol>
+            <li><b>Repository name</b>：填 <code>hello-github</code></li>
+            <li><b>Description</b>（可选）：写"我的第一个 GitHub 仓库"</li>
+            <li>选 <b>Public</b>（公开，能被别人看到）或 <b>Private</b>（私有）</li>
+            <li>✅ 勾选 <b>Add a README file</b>（它会自动生成门面说明书）</li>
+            <li>点绿色按钮 <b>Create repository</b> —— 恭喜，仓库诞生！🎉</li>
+          </ol>
+          <div class="tip orange">⚠️ 仓库名创建后可以改，但链接会变，所以第一次尽量想好再填。</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#bb8009,#d29922)">4</div>
+        <div class="step-card">
+          <h3>上传一个文件并完成首次提交 <span class="en">Upload &amp; Commit</span></h3>
+          <p>进仓库后点 <b>Add file → Upload files</b>，随便拖一个文件进去（图片、txt 都行），然后：</p>
+          <ol>
+            <li>在 <b>Commit changes</b> 的第一个输入框写提交说明，如 <code>上传我的第一张图片</code></li>
+            <li>点绿色 <b>Commit changes</b> 按钮</li>
+          </ol>
+          <p>这就是一次完整的"存档"。文件列表里现在能看到它了。</p>
+          <div class="tip green">✅ 提交说明（commit message）写清楚"做了什么"，是程序员的基本修养，从头养成好习惯。</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#db61a2,#f778ba)">5</div>
+        <div class="step-card">
+          <h3>编辑 README，学会 Markdown <span class="en">Edit README</span></h3>
+          <p>点开 <code>README.md</code> → 右上角铅笔图标 ✏️ 进入编辑，试着写：</p>
+          <div class="code">
+            <div class="code-title"><span>README.md（Markdown 语法）</span></div>
+            <pre><span class="cm"># 一级标题（这是最大的标题）</span>
+<span class="kw">##</span> 二级标题
+
+普通文字直接写，<span class="ar">**加粗**</span>用两个星号，<span class="ar">*斜体*</span>用一个星号。
+
+<span class="cm">- 减号加空格 = 列表</span>
+<span class="cm">- 列表第二行</span>
+
+[点我去看GitHub](<span class="st">https://github.com</span>) <span class="cm">← 中括号是文字，圆括号是链接</span></pre>
+          </div>
+          <p>点 <b>Preview</b> 标签可实时预览效果，最后 Commit 保存。Markdown 是写文档的通用语言，5 分钟就能上手。</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#1f6feb,#58a6ff)">6</div>
+        <div class="step-card">
+          <h3>体验分支与 PR（理解协作流程）<span class="en">Branch &amp; Pull Request</span></h3>
+          <p>用自己的仓库也能演练一遍专业协作流程：</p>
+          <ol>
+            <li>仓库页左上方分支下拉框里输入 <code>my-first-branch</code> → 点 <b>Create branch</b></li>
+            <li>在新分支上随便改点东西（比如往 README 加一行），Commit</li>
+            <li>点 <b>Compare &amp; pull request</b>，写两句话说明，点 <b>Create pull request</b></li>
+            <li>检查改动没冲突后，点 <b>Merge pull request → Confirm merge</b></li>
+            <li>切回 <code>main</code> 分支——你的改动已经"转正"了！</li>
+          </ol>
+          <div class="tip blue">💡 这个"开分支 → 改动 → PR 审核 → 合并"的流程，就是全世界程序员协作开发的标准姿势，你现在已经在真实仓库里走完了它。</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#238636,#3fb950)">7</div>
+        <div class="step-card">
+          <h3>给别人的项目点 Star &amp; 提 Issue <span class="en">Star &amp; Issue</span></h3>
+          <p>去 <b>github.com/trending</b> 逛逛热门项目：</p>
+          <ol>
+            <li>找到感兴趣的项目点 <b>⭐ Star</b> 收藏（以后在头像 → Your stars 里找）</li>
+            <li>点进 <b>Issues</b> 标签，看看大家在讨论什么、提了什么问题</li>
+            <li>如果发现 Bug 或有疑问，点 <b>New issue</b> 也提一个——这就是参与开源的第一步</li>
+          </ol>
+          <div class="tip green">✅ Star 和 Issue 完全不需要会写代码，今天就能参与。</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#5a32a3,#8957e5)">8</div>
+        <div class="step-card">
+          <h3>（选修）把项目下载到电脑上 <span class="en">Git &amp; Clone</span></h3>
+          <p>当你需要在本地写代码时，再学这一步：安装 <b>Git</b>（git-scm.com）或图形化工具 <b>GitHub Desktop</b>，然后克隆仓库：</p>
+          <div class="code">
+            <div class="code-title"><span>命令行 · 最常用的 6 条 Git 命令</span></div>
+            <pre><span class="kw">git clone</span> <span class="st">https://github.com/用户名/hello-github.git</span>  <span class="cm"># 把云端仓库下载到本地</span>
+<span class="kw">git status</span>                        <span class="cm"># 看看当前改了什么</span>
+<span class="kw">git add</span> <span class="ar">.</span>                        <span class="cm"># 把改动放进"待存档清单"</span>
+<span class="kw">git commit</span> <span class="ar">-m</span> <span class="st">"写清楚这次改了啥"</span>   <span class="cm"># 存档（本地）</span>
+<span class="kw">git push</span>                          <span class="cm"># 把存档推送到 GitHub 云端</span>
+<span class="kw">git pull</span>                          <span class="cm"># 把云端最新版本拉回本地</span></pre>
+          </div>
+          <div class="tip orange">⚠️ 不着急！纯网页操作已经能完成 80% 的新手需求，这步可以等你真正需要本地写代码时再学。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 术语表 ============ -->
+<section class="block" id="glossary">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 5 · 速查手册</span>
+      <h2>常用术语速查表</h2>
+      <p>以后看教程、看别人讨论时卡在某个词上，回来这里查。</p>
+    </div>
+    <div class="table-scroll">
+      <table class="gloss-table">
+        <thead><tr><th>术语</th><th>中文</th><th>一句话解释</th></tr></thead>
+        <tbody>
+          <tr><td>Repository (Repo)</td><td>仓库</td><td>一个项目的完整文件夹，包含所有文件和修改历史</td></tr>
+          <tr><td>Commit</td><td>提交</td><td>一次带说明的"存档"，记录改动快照</td></tr>
+          <tr><td>Branch</td><td>分支</td><td>主线的"平行草稿世界"，改稳了再合并回去</td></tr>
+          <tr><td>main</td><td>主分支</td><td>仓库默认的主线分支（以前叫 master）</td></tr>
+          <tr><td>Merge</td><td>合并</td><td>把分支上的改动并入主分支</td></tr>
+          <tr><td>Conflict</td><td>冲突</td><td>两拨人改了同一处，需要人工决定保留哪个</td></tr>
+          <tr><td>Fork</td><td>复刻</td><td>把别人的仓库复制一份到自己账号下</td></tr>
+          <tr><td>Clone</td><td>克隆</td><td>把云端仓库完整下载到本地电脑</td></tr>
+          <tr><td>Push</td><td>推送</td><td>把本地的提交上传到 GitHub</td></tr>
+          <tr><td>Pull</td><td>拉取</td><td>把 GitHub 上的最新改动下载到本地</td></tr>
+          <tr><td>Pull Request (PR)</td><td>拉取请求</td><td>"请审核并合并我的改动"的正式申请</td></tr>
+          <tr><td>Issue</td><td>议题</td><td>项目的问题/建议/任务追踪帖</td></tr>
+          <tr><td>Star</td><td>星标</td><td>点赞+收藏，Star 数代表项目热度</td></tr>
+          <tr><td>Watch</td><td>关注</td><td>订阅仓库动态，有更新会通知你</td></tr>
+          <tr><td>README</td><td>自述文件</td><td>仓库的说明书/门面，用 Markdown 写</td></tr>
+          <tr><td>Markdown (.md)</td><td>Markdown</td><td>轻量标记语言，写文档用的"简易排版语法"</td></tr>
+          <tr><td>Git</td><td>Git</td><td>本地版本管理工具，GitHub 的底层技术</td></tr>
+          <tr><td>Profile</td><td>个人主页</td><td>你的开发者名片，展示项目与贡献热力图</td></tr>
+          <tr><td>Contributor</td><td>贡献者</td><td>给项目提交过代码或文档的人</td></tr>
+          <tr><td>License</td><td>许可证</td><td>规定别人能怎么使用你代码的法律条款（如 MIT）</td></tr>
+          <tr><td>.gitignore</td><td>忽略清单</td><td>声明哪些文件不纳入版本管理（如临时文件）</td></tr>
+          <tr><td>GitHub Pages</td><td>GitHub 页面</td><td>免费的静态网站托管服务</td></tr>
+          <tr><td>GitHub Actions</td><td>自动化</td><td>自动执行测试/构建/发布的机器人流水线</td></tr>
+          <tr><td>Copilot</td><td>AI 助手</td><td>GitHub 的 AI 代码补全工具</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="block alt" id="faq">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 6 · 疑难解答</span>
+      <h2>新手最常见的 7 个问题</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>GitHub 是免费的吗？公开我的代码安全吗？</summary>
+        <div class="faq-a">免费套餐已包含不限量的<b>公开和私有仓库</b>，个人使用绰绰有余。担心安全就建 <b>Private 私有仓库</b>，只有你能看。另外注意：<b>永远不要</b>把密码、API 密钥等敏感信息传到公开仓库。</div>
+      </details>
+      <details>
+        <summary>我不会编程，GitHub 对我有用吗？</summary>
+        <div class="faq-a">有用！GitHub 本质是"带版本历史的云端文件库 + 协作平台"：<b>写论文、记笔记、管文档、放作品集</b>都可以。GitHub Pages 还能免费建个人网站。把仓库当"会存档的网盘"来用，完全没问题。</div>
+      </details>
+      <details>
+        <summary>GitHub 和 Gitee（码云）是什么关系？</summary>
+        <div class="faq-a">Gitee 是国内公司做的类似产品，功能和 GitHub 类似，国内访问速度快。但 GitHub 是全球最大的开发者社区，开源项目几乎都在上面。<b>学概念一通百通</b>，会 GitHub 就会用一切同类平台。</div>
+      </details>
+      <details>
+        <summary>国内访问 GitHub 慢/打不开怎么办？</summary>
+        <div class="faq-a">常见解决思路：① 高峰期多刷新或换个时间段；② 只是下载代码的话，可以用镜像加速站；③ 浏览器装 GitHub 加速类扩展；④ 用 <b>GitHub Desktop</b> 客户端有时比网页稳定。具体方法时效性强，搜索"GitHub 加速"找最新方案。</div>
+      </details>
+      <details>
+        <summary>我不小心删错/改错了东西怎么办？</summary>
+        <div class="faq-a">这正是 GitHub 的价值——<b>几乎一切都有历史记录</b>。仓库里点 <b>Commits</b> 能看到每次存档，可以查看任意历史版本。文件被删了？在提交历史里能找回。所以放心大胆地折腾。</div>
+      </details>
+      <details>
+        <summary>Fork、Clone、Download ZIP 有什么区别？</summary>
+        <div class="faq-a"><b>Fork</b>：复制到"你的 GitHub 账号"下，为参与协作做准备；<b>Clone</b>：下载到"你的电脑"，且和 GitHub 保持双向同步关系；<b>Download ZIP</b>：单纯打包下载一份，不保留历史、无任何后续关联，只想看看代码时用它。</div>
+      </details>
+      <details>
+        <summary>学完这个网站，下一步该学什么？</summary>
+        <div class="faq-a">推荐路线：① 练熟 Markdown 写文档 → ② 学 Git 命令行（或先玩 GitHub Desktop 图形界面）→ ③ Fork 一个感兴趣的小项目并提交第一个 PR → ④ 用 GitHub Pages 搭个人主页 → ⑤ 学习 GitHub Actions 自动化。其中「搭个人网站」和「提交第一个 PR」本站已备好专题实战教程：<a href="lab-pages.html">Pages 建站实战</a> 与 <a href="lab-first-pr.html">首个 PR 实战</a>，其余可在下方资源里找到官方教程。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 实战专题入口 ============ -->
+<section class="block" id="labs">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 7 · 实战专题</span>
+      <h2>两个专题实战，把新技能真正用起来</h2>
+      <p>学完 8 步教程后，用这两个"真实战果"练手：一个永久免费的个人网站 + 写进开源项目贡献者名单的你。</p>
+    </div>
+    <div class="lab-grid">
+      <a class="lab-card" href="lab-pages.html">
+        <span class="chip">⏱ 约 10 分钟 · 纯网页操作</span>
+        <div class="emoji">🌐</div>
+        <h3>实战 1 · 用 GitHub Pages 免费建一个网站<span class="en">GitHub Pages</span></h3>
+        <p>把仓库变成全世界都能访问的真网站：准备 index.html → 开启 Pages → 拿到你的专属网址，附 404 等常见问题排查。</p>
+        <span class="go">开始建站 →</span>
+      </a>
+      <a class="lab-card" href="lab-first-pr.html">
+        <span class="chip">⏱ 约 30 分钟 · 不需要会写代码</span>
+        <div class="emoji">🔀</div>
+        <h3>实战 2 · 提交你人生第一个 PR<span class="en">First Pull Request</span></h3>
+        <p>改错别字也算开源贡献！找新手友好的项目 → Fork → 网页端修改 → 发起 PR → 你的头像进入贡献者名单，附 PR 礼仪与应对审核。</p>
+        <span class="go">开始贡献 →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AI 编程工具 ============ -->
+<section class="block alt" id="aitools">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 8 · 拥抱 AI</span>
+      <h2>AI 编程工具：ZCode · OpenCode · DSH</h2>
+      <p>学完手写流程，也该认识"AI 实习生"了。这三个主流的终端 AI 编程代理分别是什么、能干什么、怎么装怎么用、新手怎么选——已备好完整分区。</p>
+    </div>
+    <div class="lab-grid">
+      <a class="lab-card" href="ai-tools.html">
+        <span class="chip">🤖 三款工具 · 一页讲透</span>
+        <div class="emoji">🤖</div>
+        <h3>AI 编程工具完全指南<span class="en">ZCode / OpenCode / DSH</span></h3>
+        <p>什么是"AI 编程代理"？三款工具的内置工具、模式与权限、插件与 MCP 扩展、常用命令逐一拆解，配对比表、黑话小词典与新手选择建议，附 6 条通用使用心法。</p>
+        <span class="go">进入 AI 分区 →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 资源 ============ -->
+<section class="block" id="resources">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 9 · 继续深造</span>
+      <h2>官方学习资源导航</h2>
+      <p>本站帮你入门，这些资源帮你进阶。全部免费。</p>
+    </div>
+    <div class="res-grid">
+      <a class="res" href="https://docs.github.com/zh" target="_blank" rel="noopener">
+        <h3>GitHub 官方文档</h3>
+        <p>有中文版！所有功能的权威说明，遇到具体问题先查这里。</p>
+        <span class="go">docs.github.com/zh ↗</span>
+      </a>
+      <a class="res" href="https://skills.github.com/" target="_blank" rel="noopener">
+        <h3>GitHub Skills</h3>
+        <p>官方互动练习课程，在真实仓库里边做边学 Git 和 GitHub。</p>
+        <span class="go">skills.github.com ↗</span>
+      </a>
+      <a class="res" href="https://education.github.com/" target="_blank" rel="noopener">
+        <h3>GitHub 教育（学生包）</h3>
+        <p>学生认证后免费解锁 Copilot、私有工具等一整套开发者福利。</p>
+        <span class="go">education.github.com ↗</span>
+      </a>
+      <a class="res" href="https://guides.github.com/" target="_blank" rel="noopener">
+        <h3>GitHub Guides</h3>
+        <p>官方图文指南合集：Hello World、Git 手册、Fork 工作流等经典入门文。</p>
+        <span class="go">guides.github.com ↗</span>
+      </a>
+      <a class="res" href="https://markdown.com.cn/" target="_blank" rel="noopener">
+        <h3>Markdown 中文教程</h3>
+        <p>半小时掌握写 README 必备的排版语法。</p>
+        <span class="go">markdown.com.cn ↗</span>
+      </a>
+      <a class="res" href="https://pages.github.com/" target="_blank" rel="noopener">
+        <h3>GitHub Pages 官方教程</h3>
+        <p>10 分钟把你的仓库变成一个真正的网站。</p>
+        <span class="go">pages.github.com ↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>🎉 恭喜读完！你已经超越了 99% 的"知道 GitHub 但从没用过"的人。</p>
+  <p>现在就去 <b>github.com</b> 注册账号，创建你的第一个仓库吧。用 <span class="heart">❤</span> 制作 · 内容仅供参考，界面以 GitHub 官方为准</p>
+</footer>
+
+<button id="toTop" title="回到顶部" aria-label="回到顶部">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>

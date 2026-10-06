@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI 编程工具分区 · ZCode / OpenCode / DSH 怎么用 —— GitHub 新手村</title>
+<meta name="description" content="写给新手的 AI 编程代理深度入门：ZCode、OpenCode、DSH 是什么、内置哪些工具、有哪些模式与权限、插件和 MCP 怎么玩、常用命令速查，以及新手怎么选。" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%23fff' d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z'/></svg>" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg height="26" viewBox="0 0 16 16" width="26" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+      GitHub 新手村
+    </a>
+    <div class="nav-links">
+      <a href="index.html">🏠 主页</a>
+      <a href="#agent">它们是什么</a>
+      <a href="#parts">通用零件</a>
+      <a href="#zcode">ZCode</a>
+      <a href="#opencode">OpenCode</a>
+      <a href="#dsh">DSH</a>
+      <a href="#compare">对比</a>
+      <a href="#dict">小词典</a>
+      <a href="#mindset">使用心法</a>
+      <a href="#tools-faq">常见问题</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="crumbs"><a href="index.html">主页</a><span class="sep">/</span>AI 编程工具分区</div>
+  <h1>🤖 ZCode · OpenCode · DSH</h1>
+  <p class="sub">
+    现在写代码的新姿势：不再一行行敲，而是<b>用大白话告诉 AI 你的目标，让它自己去读代码、改文件、跑命令</b>。
+    这个分区讲透三款主流终端 AI 编程代理：内置工具、模式与权限、插件生态、常用命令，一次搞懂。
+  </p>
+  <span class="req">✅ 零基础可读 · 建议先看完主页教程，理解"仓库 / 提交 / 分支"后体验更佳 · 具体以各家官方文档为准</span>
+</header>
+
+<!-- ============ 概念 ============ -->
+<section class="block" id="agent">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 1 · 先搞懂</span>
+      <h2>什么是"AI 编程代理（Agent）"？</h2>
+      <p>你可能在别处用过 AI 聊天：它只能给你代码，让你自己复制粘贴。而 AI 编程代理更进一步——</p>
+    </div>
+    <div class="vs-grid">
+      <div class="vs-card">
+        <h3>💬 普通 AI 聊天</h3>
+        <p class="tag">"纸上谈兵"的军师</p>
+        <ul>
+          <li>你问它答，代码要自己复制粘贴</li>
+          <li>看不到你的项目全貌，只有你贴给它的片段</li>
+          <li>改完对不对，得你自己跑起来验证</li>
+        </ul>
+      </div>
+      <div class="vs-mid">VS</div>
+      <div class="vs-card">
+        <h3>🤖 AI 编程代理</h3>
+        <p class="tag">能动手干活的"AI 实习生"</p>
+        <ul>
+          <li>住在你的终端里，直接读你的项目代码</li>
+          <li>你下目标，它自己规划 → 改文件 → 跑命令 → 汇报结果</li>
+          <li>能连续完成多步任务，出错了自己看报错再修</li>
+        </ul>
+      </div>
+    </div>
+    <div class="vs-note">
+      💡 <strong>一句话记住：</strong>代理 = AI 大脑 + 你的电脑操作权限。你从"程序员"变成"派活的老板"，把需求说清楚、检查验收就行。下面三款就是这类工具的代表，只是"脑子"（模型）和"身体"（界面形态）不同。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 通用零件 ============ -->
+<section class="block alt" id="parts">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 2 · 通用零件</span>
+      <h2>所有代理都有的 6 个"零件"，先认一遍</h2>
+      <p>三款工具的界面和叫法不同，但零件是一样的。先建立这套"地图"，后面看哪家文档都不迷路。</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--blue)"></span>① 工具（Tools）</h3>
+        <p>代理的"手"：读写文件、执行终端命令、搜索代码、联网查资料……你说的每个任务，都是它调用一个个工具完成的。执行工具时会向你展示过程。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--blue)"></span>② 模式（Modes）</h3>
+        <p>代理的"挡位"：最常见的是 <b>Plan 计划模式</b>（只读不改，先给方案）和 <b>Build/Edit 执行模式</b>（真正动手改代码）。先规划后动手是好习惯。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--blue)"></span>③ 权限（Permissions）</h3>
+        <p>安全阀：决定哪些操作 AI 可以直接做（如读文件），哪些必须先问你（如删文件、跑命令）。新手建议保持"多问"的严格档。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--blue)"></span>④ 记忆与规范</h3>
+        <p>项目说明书文件（如 <code>AGENTS.md</code> / <code>CLAUDE.md</code>）：写清技术栈、规范、禁区，代理每次干活都遵守，一次编写长期生效。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--blue)"></span>⑤ MCP 扩展</h3>
+        <p>行业的"USB 接口"标准：接入外部工具服务器，让代理多出新能力（查数据库、控制浏览器、调内部 API……）。三款工具都支持。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--blue)"></span>⑥ 插件 / Skills</h3>
+        <p>给代理装"技能包"：插件改变行为（接新 CLI、加钩子），Skill 教会它某领域的成套做法（如"怎么发版"）。各家商店与格式略有不同。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ZCode ============ -->
+<section class="block" id="zcode">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 3 · 工具一</span>
+      <h2>ZCode —— GLM 官方的"智能开发环境"</h2>
+      <p>出品：Z.ai。官方定位是 GLM 大模型的 AI 编程代理工具（Harness），把模型和代理能力接进你现有的工具链，覆盖<b>规划 → 写码 → 审查 → 部署</b>的完整开发流程，并有针对 GLM 深度优化的长程任务能力。</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--blue)"></span>以仓库为中心工作</h3>
+        <p>打开一个项目文件夹就是一个工作区，代理围绕整个仓库干活，而不是只看你贴的一小段代码。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--blue)"></span>多种形态</h3>
+        <p>终端 CLI、桌面端、Web 端，还能通过 ACP 协议接入 Zed 等编辑器，选你顺手的姿势。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--blue)"></span>Goal Mode 目标模式</h3>
+        <p>给一个目标，它自主拆解规划、逐步执行；配合权限模式可控，重要操作会先征求你同意。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--blue)"></span>模型可选可管理</h3>
+        <p>对话框点模型名打开选择器，"管理模型"面板可配置多个模型通道，不同任务用不同模型。</p>
+      </div>
+    </div>
+
+    <div class="steps" style="margin-top:32px">
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#1f6feb,#58a6ff)">1</div>
+        <div class="step-card">
+          <h3>安装 / 启动</h3>
+          <p>访问官网 <b>zcode.z.ai</b> 按指引安装（源码开源于 GitHub 的 zai-org/ZCode），在项目根目录启动交互会话：</p>
+          <div class="code">
+            <div class="code-title"><span>终端</span></div>
+            <pre><span class="kw">cd</span> my-project        <span class="cm"># 进入你的项目文件夹</span>
+<span class="kw">zcode</span>                <span class="cm"># 启动 ZCode 交互代理（首次按提示登录 / 绑定套餐）</span></pre>
+          </div>
+          <p>登录后即可使用；用 GLM Coding Plan 套餐计费，也可在设置里管理其他模型通道。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#8957e5,#bc8cff)">2</div>
+        <div class="step-card">
+          <h3>给项目立规矩：创建 AGENTS.md</h3>
+          <p>在项目根目录新建 <code>AGENTS.md</code>（兼容 <code>CLAUDE.md</code> 等同类约定），这是代理的"员工手册"：</p>
+          <div class="code">
+            <div class="code-title"><span>AGENTS.md</span></div>
+            <pre><span class="cm"># 项目说明</span>
+- 技术栈：纯 HTML/CSS/JS，无构建工具
+- 改完代码必须自己打开浏览器验证
+- <span class="kw">不要动</span> .shots/ 目录和任何密钥文件
+- 提交信息用中文，一行讲清改动</pre>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#238636,#3fb950)">3</div>
+        <div class="step-card">
+          <h3>用大白话下达目标</h3>
+          <p>像给实习生派活一样说话，它自己规划执行，关键改动前会找你确认：</p>
+          <div class="code">
+            <div class="code-title"><span>任务示例</span></div>
+            <pre>&gt; 给网站加一个"回到顶部"按钮，固定在右下角，样式和现有主题一致
+&gt; 检查所有页面有没有手机端排版问题，列出来并修复
+&gt; 把这次改动 <span class="ar">commit</span> 并说明改动内容</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-scroll" style="margin-top:28px">
+      <table class="gloss-table">
+        <thead><tr><th>ZCode 的"零件"</th><th>是什么 / 怎么用</th></tr></thead>
+        <tbody>
+          <tr><td>内置工具</td><td>读写项目文件、执行终端命令、检索代码、联网查资料等；每次调用都会展示在会话里，你能看到它"手"在动</td></tr>
+          <tr><td>模式与权限</td><td>可切换"先出计划再动手"的计划方式与直接执行；权限模式下删文件、跑脚本等敏感操作会先请求批准，新手建议保持严格档</td></tr>
+          <tr><td>Subagents 子代理</td><td>把大任务拆给多个"分身"并行处理（如一个查资料、一个写代码），主代理负责汇总，适合大改动</td></tr>
+          <tr><td>Skills 技能</td><td>用 Markdown 编写的"成套做法"，教代理按固定套路完成某类任务（如"发版流程"），放在项目或用户目录即可生效</td></tr>
+          <tr><td>MCP 扩展</td><td>在配置文件里登记 MCP 服务器即可扩展工具箱：用户级 <code>~/.zcode/cli/config.json</code>（mcp.servers），项目级 <code>.zcode/config.json</code>；可接浏览器控制、数据库等外部工具</td></tr>
+          <tr><td>自动化</td><td>支持定时/自动触发任务（如每天固定时间跑检查），把重复劳动交给代理</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OpenCode ============ -->
+<section class="block alt" id="opencode">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 4 · 工具二</span>
+      <h2>OpenCode —— 开源免费的"终端 AI 编程代理"</h2>
+      <p>开源社区作品（opencode.ai），专为终端打造，界面是一个漂亮的 TUI（终端图形界面）。最大特色：<b>不绑定任何模型厂商</b>，Claude、GLM、DeepSeek、GPT……谁的 API 都能接，随时换。</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--green)"></span>完全开源</h3>
+        <p>代码公开在 GitHub，免费使用，社区活跃迭代快，也是很多同类工具的学习对象。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--green)"></span>模型自由</h3>
+        <p>内置 /models 选择器，接各家 API 都行；哪家便宜用哪家，一个工具吃遍所有模型。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--green)"></span>Plan / Build 双代理</h3>
+        <p>自带两个"人格"：<b>Plan</b> 只读不改、专门出实现方案，<b>Build</b> 真正动手改代码。TUI 里按 <code>Tab</code> 即可切换。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--green)"></span>两种用法</h3>
+        <p>交互式 TUI 慢慢聊，或 <code>opencode run "任务"</code> 一句话直接跑完退出，方便写进脚本自动化。</p>
+      </div>
+    </div>
+
+    <div class="steps" style="margin-top:32px">
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#238636,#3fb950)">1</div>
+        <div class="step-card">
+          <h3>安装（二选一）</h3>
+          <div class="code">
+            <div class="code-title"><span>终端</span></div>
+            <pre><span class="cm"># 方式一：官方一键脚本（macOS / Linux）</span>
+<span class="kw">curl</span> -fsSL https://opencode.ai/install | <span class="kw">bash</span>
+
+<span class="cm"># 方式二：npm 安装（装过 Node.js 的用这个）</span>
+<span class="kw">npm</span> install -g opencode-ai</pre>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#1f6feb,#58a6ff)">2</div>
+        <div class="step-card">
+          <h3>进项目、选模型、派活</h3>
+          <div class="code">
+            <div class="code-title"><span>终端</span></div>
+            <pre><span class="kw">cd</span> my-project
+<span class="kw">opencode</span>             <span class="cm"># 启动 TUI 界面</span>
+
+<span class="cm"># 在 TUI 里：</span>
+/models               <span class="cm"># 选模型厂商和具体型号，首次填 API Key</span>
+<span class="kw">Tab</span>                   <span class="cm"># 在 Plan / Build 模式间切换</span>
+&gt; 先出个方案：给首页加深色模式，改动最小化</pre>
+          </div>
+          <p>也可以一句话非交互运行：</p>
+          <div class="code">
+            <div class="code-title"><span>终端 · 单次任务</span></div>
+            <pre><span class="kw">opencode</span> <span class="kw">run</span> <span class="st">"把 README.md 翻译成英文并保持 Markdown 格式"</span></pre>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#bb8009,#d29922)">3</div>
+        <div class="step-card">
+          <h3>推荐工作流：先 Plan 后 Build</h3>
+          <ol>
+            <li><b>Plan 模式</b>：让代理只读代码、给出实现方案，你反复讨论改到满意</li>
+            <li>切 <code>Tab</code> 换到 <b>Build 模式</b>：让它按定稿方案动手改</li>
+            <li>改完不满意？<code>/undo</code> 撤回它做的修改，再来一遍</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-scroll" style="margin-top:28px">
+      <table class="gloss-table">
+        <thead><tr><th>OpenCode 的"零件"</th><th>是什么 / 怎么用</th></tr></thead>
+        <tbody>
+          <tr><td>斜杠命令</td><td>TUI 里输入 <code>/</code> 唤出：<code>/new</code> 新会话、<code>/undo</code> 撤销上一步修改、<code>/share</code> 生成会话分享链接、<code>/models</code> 换模型、<code>/help</code> 帮助；还支持自定义命令</td></tr>
+          <tr><td>权限控制</td><td>在 <code>opencode.json</code> 里按工具配置（如 <code>edit</code> 编辑、<code>bash</code> 跑命令允许 / 询问 / 禁止）；运行中触发敏感工具会弹窗等你批准</td></tr>
+          <tr><td>自定义代理</td><td>可以造自己的"人格"：限定它能用哪些工具、权限多严，比如"只许改文档的审校员"</td></tr>
+          <tr><td>自定义命令</td><td>把常用提示词写成 Markdown 文件放进 <code>.opencode/command/</code>，变成团队共享的快捷命令</td></tr>
+          <tr><td>插件</td><td>JavaScript/TypeScript 插件，挂在工具执行等事件上做钩子（如禁止碰某些文件、自动格式化）</td></tr>
+          <tr><td>MCP 扩展</td><td>在 <code>opencode.json</code> 的 <code>mcp</code> 配置段挂载外部工具服务器，本地或远程都行</td></tr>
+          <tr><td>项目规范</td><td>支持 AGENTS.md 一类的项目说明文件，进来先读懂规矩再干活</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DSH ============ -->
+<section class="block" id="dsh">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 5 · 工具三</span>
+      <h2>DSH —— DeepSeek 官方的"通用代理运行时"</h2>
+      <p>DSH（DeepSeek Harness）是 DeepSeek AI 开源的智能体框架，DeepSeek 模型原生加持。它不止写代码：用自然语言就能让代理<b>读写文件、执行命令、委派子代理、编排工作流</b>。官方提供 CLI、Web UI、VS Code 扩展三种形态，并有活跃的插件生态。</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--purple)"></span>官方 CLI + Web UI</h3>
+        <p>npm 包 <code>@deepseek-ai/dsh</code> 一键启动终端代理或本地 Web 界面，双形态随意切换。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--purple)"></span>VS Code 扩展</h3>
+        <p>扩展商店搜 "DSH Agent"，通过 ACP 协议在编辑器里直接对话代理，边写边让 AI 干活。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--purple)"></span>插件商店</h3>
+        <p>社区插件市场（如 DSH 插件商店）提供 Skills 技能包与 MCP 服务器挂载插件，装上就多新能力。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--purple)"></span>oh-dsh 发行版</h3>
+        <p>社区（hust-open-atom-club）维护的整合包 <code>oh-dsh</code>：一条 <code>ohdsh</code> 命令在桌面端 / Web / TUI 三种形态间切换。</p>
+      </div>
+    </div>
+
+    <div class="steps" style="margin-top:32px">
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#5a32a3,#8957e5)">1</div>
+        <div class="step-card">
+          <h3>安装官方 CLI（需要 Node.js）</h3>
+          <div class="code">
+            <div class="code-title"><span>终端</span></div>
+            <pre><span class="kw">npm</span> install -g @deepseek-ai/dsh   <span class="cm"># 安装官方 CLI / Web UI 启动包</span>
+<span class="kw">dsh</span>                               <span class="cm"># 在项目目录启动代理（首次按提示配置模型）</span></pre>
+          </div>
+          <p>不想折腾命令行？装 VS Code 扩展 "DSH Agent"，或用社区发行版 <code>oh-dsh</code> 获得桌面端 / Web / TUI 三合一体验。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#db61a2,#f778ba)">2</div>
+        <div class="step-card">
+          <h3>日常使用姿势</h3>
+          <ol>
+            <li>在项目根目录启动 <code>dsh</code>，用大白话描述任务（"读这个项目，修复登录报错"）</li>
+            <li>它调用工具读代码、改文件、跑命令；敏感操作会请求你的许可</li>
+            <li>复杂任务可以让它<b>委派子代理</b>分工，或编排成工作流自动跑</li>
+            <li>想扩展能力就去插件市场装 Skills / MCP 插件；进阶用户可用官方 Python SDK 把 DSH 嵌进自己的程序</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-scroll" style="margin-top:28px">
+      <table class="gloss-table">
+        <thead><tr><th>DSH 的"零件"</th><th>是什么 / 怎么用</th></tr></thead>
+        <tbody>
+          <tr><td>内置能力</td><td>读写文件、执行终端命令、检索代码、联网查询；支持委派子代理并行干活、编排多步工作流</td></tr>
+          <tr><td>权限审批</td><td>敏感操作（改文件、跑命令）会先请求确认；可在配置里调整放行范围，新手保持"多问"档</td></tr>
+          <tr><td>三种形态</td><td>CLI / Web UI / VS Code 扩展（ACP 协议）随时切换；oh-dsh 发行版用一条 <code>ohdsh</code> 命令管理全部形态</td></tr>
+          <tr><td>插件生态</td><td>插件商店提供 Skills 技能包与 MCP 服务器挂载（mounts）类插件；也有官方指南教你设计、打包自己的插件</td></tr>
+          <tr><td>Python SDK</td><td>官方 <code>deepseek-harness-sdk</code>：写 Python 程序直接调度 DSH，把它嵌进自动化流水线</td></tr>
+          <tr><td>开源</td><td>框架开源，GitHub 上可看源码、提 Issue；社区有蓝皮书 / 指导手册从零上手到插件开发</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 对比 ============ -->
+<section class="block alt" id="compare">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 6 · 怎么选</span>
+      <h2>三款工具对比速览</h2>
+    </div>
+    <div class="table-scroll">
+      <table class="gloss-table">
+        <thead><tr><th>工具</th><th>出品方</th><th>形态</th><th>模型</th><th>模式与扩展</th><th>适合谁</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>ZCode</td><td>Z.ai</td><td>CLI / 桌面端 / Web</td>
+            <td>GLM 系列（官方 Harness）</td>
+            <td>Goal Mode + 权限审批；Skills / Subagents / MCP / 定时自动化</td>
+            <td>想要开箱即用、中文生态、围绕仓库完整开发的人</td>
+          </tr>
+          <tr>
+            <td>OpenCode</td><td>开源社区</td><td>终端 TUI（另有 CLI）</td>
+            <td>任意厂商（自己接 API）</td>
+            <td>Plan / Build 双代理（Tab 切换）+ 权限配置；自定义代理 / 命令 / 插件 / MCP</td>
+            <td>喜欢开源、想灵活选模型的"键盘流"玩家</td>
+          </tr>
+          <tr>
+            <td>DSH</td><td>DeepSeek</td><td>CLI / Web UI / VS Code 扩展</td>
+            <td>DeepSeek 系列（原生）</td>
+            <td>子代理 + 工作流编排；插件商店（Skills / MCP）、Python SDK、开源</td>
+            <td>DeepSeek 用户、爱装插件折腾玩法的人</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="vs-note" style="margin-top:22px">
+      🎯 <strong>选择困难症解法：</strong>都是"AI 实习生"，核心能力相似。<b>新手别纠结，挑一个先玩起来</b>——介意折腾就选模型绑定的（ZCode / DSH），想要自由和免费就选 OpenCode；用一段时间自然就懂差异了，概念完全相通。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 小词典 ============ -->
+<section class="block" id="dict">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 7 · 术语</span>
+      <h2>AI 代理圈黑话小词典</h2>
+      <p>看任何一款工具的文档都会撞上这些词，先备好字典。</p>
+    </div>
+    <div class="table-scroll">
+      <table class="gloss-table">
+        <thead><tr><th>术语</th><th>中文</th><th>一句话解释</th></tr></thead>
+        <tbody>
+          <tr><td>Agent</td><td>代理 / 智能体</td><td>能自主调用工具、多步完成任务的 AI，不只是"你问我答"</td></tr>
+          <tr><td>Tool</td><td>工具</td><td>代理的"手"：读文件、改文件、跑命令、联网搜索都是一个个工具</td></tr>
+          <tr><td>Plan mode</td><td>计划模式</td><td>只读不改，先给实现方案；讨论定稿后再切执行模式动手</td></tr>
+          <tr><td>Permission</td><td>权限</td><td>哪些操作 AI 能直接做、哪些要人工批准，安全的第一道闸</td></tr>
+          <tr><td>Context</td><td>上下文</td><td>AI 一次能"装进脑子"的内容上限；项目太大时它会挑重点读</td></tr>
+          <tr><td>Token</td><td>令牌</td><td>模型计费与计量的单位，约等于半个到一个词，API 按量收费</td></tr>
+          <tr><td>MCP</td><td>模型上下文协议</td><td>给代理接外部工具的通用标准，被三款工具共同支持，像"USB 接口"</td></tr>
+          <tr><td>Skill</td><td>技能</td><td>写成文档的"成套做法"，装上后代理会按套路完成某类任务</td></tr>
+          <tr><td>Subagent</td><td>子代理</td><td>主代理派出去干活的"分身"，并行处理、汇报汇总</td></tr>
+          <tr><td>TUI</td><td>终端图形界面</td><td>在终端里画出窗口、菜单的界面（区别于纯命令行和网页）</td></tr>
+          <tr><td>ACP</td><td>代理客户端协议</td><td>让编辑器（如 Zed、VS Code 扩展）和代理对话的标准接口</td></tr>
+          <tr><td>Harness</td><td>工具链 / 运行时</td><td>给大模型装上"手脚和界面"的框架，模型是脑子，Harness 是身体</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 心法 ============ -->
+<section class="block alt" id="mindset">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Part 8 · 通用心法</span>
+      <h2>不管用哪款，这 6 条都适用</h2>
+      <p>工具会过时，习惯不会。这是让 AI 代理干活又快又稳的关键。</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--yellow)"></span>1. 把话说清楚</h3>
+        <p>说清"目标 + 约束 + 验收标准"："加个搜索框，用现有配色，改完自查手机端排版"远好过"帮我改改网站"。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--yellow)"></span>2. 小步快跑</h3>
+        <p>大任务拆成小任务，一次一个。每完成一步就验证一步，出错好定位，也不怕它"跑偏十万八千里"。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--yellow)"></span>3. 先 Plan 后 Build</h3>
+        <p>重要改动先让它在计划模式出方案，你确认了再放行动手——一次通过率远高于"上来就改"。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--yellow)"></span>4. Git 是你的安全网</h3>
+        <p>让代理改代码前先 commit 存档（这正是本站教程教过的！），改砸了一键回滚，永远有后悔药。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--yellow)"></span>5. 写 AGENTS.md</h3>
+        <p>技术栈、规范、禁区写进项目说明书，一次编写长期生效，比每次口头叮嘱靠谱得多。</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot" style="background:var(--yellow)"></span>6. 保留判断力</h3>
+        <p>AI 会一本正经地出错。跑通了 ≠ 做对了，最终验收的责任在你。把它当实习生，不是当领导。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="block" id="tools-faq">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">疑难解答</span>
+      <h2>AI 编程工具常见问题</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>我完全不会编程，能用这些工具吗？</summary>
+        <div class="faq-a">能上手，但要有心理预期：这些工具能把"改个按钮颜色、写个静态页面"这类小活办得很好，但你需要<b>看得懂基本结果、能描述问题</b>。建议路线：先学完本站 GitHub 基础 → 用代理做小项目 → 遇到概念再查。它反而是零基础学编程的好陪练。</div>
+      </details>
+      <details>
+        <summary>三款工具哪个"最好"？</summary>
+        <div class="faq-a">没有绝对最好，只有最适合：绑定 GLM 选 <b>ZCode</b>，想要开源和模型自由选 <b>OpenCode</b>，用 DeepSeek 且爱插件生态选 <b>DSH</b>。它们的使用方式高度相似（进项目目录 → 说目标 → 审阅结果），换工具的成本很低，先上手一个即可。</div>
+      </details>
+      <details>
+        <summary>免费吗？钱花在哪？</summary>
+        <div class="faq-a">分两块：<b>工具本身</b>和<b>模型调用</b>。OpenCode 工具免费，但接哪家模型就按那家的 API 计费；ZCode / DSH 通常跟着官方模型的套餐或 API 计费走。模型 API 一般按 token 用量收费，新手轻度使用每月花费通常很低，也有免费额度可薅。</div>
+      </details>
+      <details>
+        <summary>安全吗？它会不会删我文件、泄露代码？</summary>
+        <div class="faq-a">正规工具都有<b>权限模式</b>：敏感操作（删文件、执行命令）会先请求批准，新手建议全程开着。隐私方面，你的代码会发送给模型服务商处理，介意的话注意别把密码和密钥写进代码。另外<b>先 commit 再让 AI 动手</b>，出任何问题都能回滚。</div>
+      </details>
+      <details>
+        <summary>它们和 GitHub 是什么关系？</summary>
+        <div class="faq-a">分工明确：AI 代理在<b>你电脑上写代码</b>，GitHub 负责<b>在云端存代码、管版本、多人协作</b>。典型工作流：代理改完代码 → 你检查后 commit → push 到 GitHub。有些代理还能直接操作 GitHub 的仓库、Issue 和 PR，两者是配合关系。</div>
+      </details>
+      <details>
+        <summary>这些工具更新很快，教程过时了怎么办？</summary>
+        <div class="faq-a">看官方源：ZCode 见 <code>zcode.z.ai</code> 与 GitHub 的 zai-org/ZCode；OpenCode 见 <code>opencode.ai</code>；DSH 见 npm 包 <code>@deepseek-ai/dsh</code>、VS Code 扩展 "DSH Agent" 与社区 awesome-deepseek-harness 合集。安装命令和界面常变，但"目标 → 规划 → 执行 → 审阅"的使用逻辑长期不变。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="pager">
+  <a href="index.html">
+    <div class="dir">← 返回</div>
+    <div class="t">GitHub 新手村主页</div>
+  </a>
+  <a class="next" href="lab-first-pr.html">
+    <div class="dir">实战演练 →</div>
+    <div class="t">提交你人生第一个 PR</div>
+  </a>
+</div>
+
+<footer>
+  <p>🤖 工具只是杠杆，真正稀缺的是"说清目标 + 判断好坏"的你。</p>
+  <p>用 <span class="heart">❤</span> 制作 · 工具信息以各家官方文档为准</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

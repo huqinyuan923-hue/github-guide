@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>专题实战 2 · 提交你人生第一个 PR —— GitHub 新手村</title>
+<meta name="description" content="手把手教你提交人生第一个 Pull Request：找适合新手的项目、Fork、网页端编辑、写 PR 描述、应对审核意见，不写代码也能给开源做贡献。" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%23fff' d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z'/></svg>" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg height="26" viewBox="0 0 16 16" width="26" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+      GitHub 新手村
+    </a>
+    <div class="nav-links">
+      <a href="index.html">🏠 主页</a>
+      <a href="#find">找项目</a>
+      <a href="#fork">Fork &amp; 修改</a>
+      <a href="#open-pr">发起 PR</a>
+      <a href="#review">审核与合并</a>
+      <a href="#pr-faq">常见问题</a>
+      <a href="lab-pages.html">上一个实战 ←</a>
+      <a href="ai-tools.html">AI 编程工具</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="crumbs"><a href="index.html">主页</a><span class="sep">/</span>专题实战 2</div>
+  <h1>🔀 提交你人生第一个 PR</h1>
+  <p class="sub">
+    给开源项目做贡献听起来遥不可及？其实你的名字可以今天就能写进一个项目的贡献者名单——
+    而且全程只用浏览器，甚至不需要会写代码。
+  </p>
+  <span class="req">✅ 前置要求：已完成主页教程第 1~7 步（有账号、了解 Fork 和 PR 的概念）</span>
+</header>
+
+<section class="block" id="mindset">
+  <div class="wrap">
+    <div class="vs-note">
+      💪 <strong>先做心理建设：</strong>PR ≠ 必须写高深代码。开源项目里最缺的往往是最基础的贡献——<b>改错别字、修失效链接、补一句文档、翻译、加一张截图</b>，都是正式贡献，都会让你的头像出现在项目的 Contributors（贡献者）名单里。全世界的程序员，几乎都是从"帮项目改了个 typo"开始的。
+    </div>
+  </div>
+</section>
+
+<section class="block" id="find">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Step 1</span>
+      <h2>找一个适合新手的下手对象</h2>
+      <p>别一上来就挑战 Linux 内核。挑项目的三条路：</p>
+    </div>
+    <div class="concept-grid">
+      <div class="concept">
+        <div class="icon" style="background:rgba(210,153,34,.15)">🏷️</div>
+        <h3>搜 "good first issue" 标签</h3>
+        <p>在 GitHub 搜索框输入 <code>label:"good first issue"</code>，或直接逛 <code>github.com/topics/good-first-issue</code>。这些议题是项目方专门留给新手的，难度有保障。</p>
+      </div>
+      <div class="concept">
+        <div class="icon" style="background:rgba(88,166,255,.15)">📖</div>
+        <h3>从文档类仓库下手</h3>
+        <p>找你熟悉的软件的<b>中文文档 / 教程仓库</b>（很多开源项目都有 docs 仓库），看到错别字、过期链接、翻译别扭的地方，就是你的机会。纯文字改动，几乎不会被拒绝。</p>
+      </div>
+      <div class="concept">
+        <div class="icon" style="background:rgba(63,185,80,.15)">🧭</div>
+        <h3>先读贡献指南</h3>
+        <p>像样的仓库根目录都有 <code>CONTRIBUTING.md</code>（如何参与贡献）和 <code>README.md</code>。动手前花五分钟读一遍，能避开 90% 的退回原因。</p>
+      </div>
+    </div>
+    <div class="tip orange" style="margin-top:20px">⚠️ 两条红线：不要一次提很多个雷同的 PR 刷存在感（会被当成 spam 拉黑）；不要抢别人已经在做的 Issue（先在 Issue 里留言问一句"这个我可以试试吗？"）。</div>
+  </div>
+</section>
+
+<section class="block alt" id="fork">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Step 2</span>
+      <h2>Fork 复制仓库，然后动手改</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#8957e5,#bc8cff)">A</div>
+        <div class="step-card">
+          <h3>点 Fork，把项目复制到自己账号下</h3>
+          <ol>
+            <li>进入目标仓库，点右上角 <b>Fork</b> 按钮</li>
+            <li>弹窗里直接点 <b>Create fork</b>，几秒后 <code>你的用户名/项目名</code> 就出现在你账号下了</li>
+          </ol>
+          <div class="tip blue">💡 Fork 之后页面顶部会有一行小提示："This branch is X commits behind 原作者:main"——这是正常的，说明这是你的副本。</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#1f6feb,#58a6ff)">B</div>
+        <div class="step-card">
+          <h3>在你自己的副本里编辑文件（网页端即可）</h3>
+          <ol>
+            <li>找到要改的文件，点右上角 ✏️ <b>铅笔图标</b> 进入网页编辑器</li>
+            <li>做你的修改：改错别字、补文档、调翻译……一次只改一件事</li>
+            <li>点右上角绿色 <b>Commit changes</b>，在弹窗里：<ul style="margin:8px 0 0 20px">
+              <li>提交说明写清楚，如 <code>docs: 修正第 3 章的"登陆"错别字为"登录"</code></li>
+              <li>选择 <b>Commit directly to the main branch</b>（新手首次直接提交即可）</li>
+            </ul></li>
+          </ol>
+          <div class="tip green">✅ 提交说明格式建议：<code>类型: 做了什么</code>，类型用 docs（文档）、fix（修复）、feat（新功能）。这是开源社区的通用习惯。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="open-pr">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Step 3</span>
+      <h2>发起 Pull Request</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#bb8009,#d29922)">A</div>
+        <div class="step-card">
+          <h3>点 "Contribute → Open pull request"</h3>
+          <ol>
+            <li>回到你 Fork 的仓库首页，文件列表上方会出现一条横幅：<b>This branch has changes that are proposed…</b>，点 <b>Contribute</b> → <b>Open pull request</b></li>
+            <li>GitHub 会自动对比"原仓库 ← 你的副本"，确认底部显示 <b>Able to merge</b>（无冲突）</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#238636,#3fb950)">B</div>
+        <div class="step-card">
+          <h3>写好标题和描述（决定成败的一步）</h3>
+          <p>维护者每天收到很多 PR，一篇清爽的描述能大大提高通过率。照这个模板写：</p>
+          <div class="code">
+            <div class="code-title"><span>PR 描述模板（可直接套用）</span></div>
+            <pre><span class="cm">## 改了什么</span>
+修正 README.md 第 42 行的错别字："登陆" → "登录"
+
+<span class="cm">## 为什么改</span>
+中文语境下"登录"是标准用法，全文其他地方也都用的"登录"
+
+<span class="cm">## 截图（如改动涉及页面显示）</span>
+（贴一张修改前后的对比图更好）</pre>
+          </div>
+          <ol>
+            <li>填好标题和描述，点 <b>Create pull request</b></li>
+            <li>🎉 你的 PR 已经出现在原仓库的 <b>Pull requests</b> 标签页里，有专属编号（如 #128）</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="review">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Step 4</span>
+      <h2>等待审核、修改、被合并</h2>
+      <p>PR 提交后进入维护者的审核队列。接下来发生的一切都在 PR 页面（Notification 通知 + 邮件）里进行。</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3>✅ 直接合并 Merge</h3>
+        <p>审核通过，你的改动进入原项目主线。你的头像会出现在仓库的 <b>Contributors</b> 名单里，个人主页也会新增一枚贡献徽章。</p>
+      </div>
+      <div class="feature">
+        <h3>✏️ Request changes</h3>
+        <p>维护者留言让你修改。别慌，这正是流程的一部分：回到你 Fork 的仓库，继续编辑文件并 Commit——新提交会<b>自动出现在同一个 PR 里</b>，无需重开。</p>
+      </div>
+      <div class="feature">
+        <h3>💬 Comment 讨论</h3>
+        <p>对方有疑问，在评论区礼貌回复即可。沟通语言看项目惯例（很多中文项目用中文）。</p>
+      </div>
+      <div class="feature">
+        <h3>⏳ 没人理？</h3>
+        <p>维护者都是用业余时间做开源，等一周很正常。可以在同一个 PR 下礼貌地留一句跟进："Hi，方便时帮忙看一下这个 PR 吗？谢谢！"</p>
+      </div>
+    </div>
+    <div class="vs-note" style="margin-top:22px">
+      🏆 <strong>合并之后：</strong>去原仓库点 <b>Insights → Contributors</b>，找到你的头像截图留念吧。这就是你的第一份开源履历，写进简历都是加分的。
+    </div>
+  </div>
+</section>
+
+<section class="block" id="pr-faq">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">疑难解答</span>
+      <h2>第一个 PR 常见问题</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>PR 被拒绝了怎么办？很丢人吗？</summary>
+        <div class="faq-a">完全正常，任何人的 PR 都可能被拒。看一眼拒绝理由：<b>方向不符合项目规划</b>（学到了解项目）、<b>改法不对</b>（学到了正确姿势）、或者就是维护者没精力。礼貌回一句"感谢反馈，我学到了"，然后找下一个项目。没有人会记得被拒的 PR，但你的贡献者名单会一直都在。</div>
+      </details>
+      <details>
+        <summary>PR 和我直接编辑别人仓库有什么区别？</summary>
+        <div class="faq-a">你对别人的仓库<b>没有直接写权限</b>——点铅笔时 GitHub 会自动帮你 Fork 一份再改，改完必须通过 PR 请有权限的人审核合并。而自己的仓库自己就是管理员，所以主页教程第 6 步才能一键 Merge。</div>
+      </details>
+      <details>
+        <summary>提交之后发现改错了，还能补救吗？</summary>
+        <div class="faq-a">能。继续在你 Fork 的文件上修改并 Commit，新改动会自动同步进这个 PR（一个 PR = 一个分支上的所有提交）。整个 PR 不要了就点 <b>Close pull request</b> 关掉即可，随时可以重新开。</div>
+      </details>
+      <details>
+        <summary>我的 Fork 落后原项目很多了，怎么同步？</summary>
+        <div class="faq-a">在你 Fork 的仓库页点 <b>Sync fork → Update branch</b>，一键把原项目的最新内容拉下来。建议每次动手贡献前先做这一步，减少冲突。</div>
+      </details>
+      <details>
+        <summary>有没有专门给新手练手的官方途径？</summary>
+        <div class="faq-a">有：① <b>firstcontributions</b> 项目（搜 "first-contributions"）——专门让新手在一个教学仓库里完成第一个 PR 的互动教程；② GitHub 官方的 <b>GitHub Skills</b>（skills.github.com）也有 PR 实战课。建议先在这里"试刀"，再去真实项目贡献。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="pager">
+  <a href="lab-pages.html">
+    <div class="dir">← 上一个实战</div>
+    <div class="t">用 GitHub Pages 免费建站</div>
+  </a>
+  <a href="index.html">
+    <div class="dir">返回 →</div>
+    <div class="t">GitHub 新手村主页</div>
+  </a>
+</div>
+
+<footer>
+  <p>🔀 第一个 PR 是每个开源贡献者的起点，期待在 Contributors 名单里见到你！</p>
+  <p>用 <span class="heart">❤</span> 制作 · 界面以 GitHub 官方为准</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
