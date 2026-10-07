@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>专题实战 3 · 从零到上线自己的工具站 —— GitHub 新手村</title>
+<meta name="description" content="复盘一个真实工具站从想法到上线的全过程：为什么选纯前端、怎么挑第一个工具、离线缓存与细节打磨、部署到自定义域名，以及新手最容易踩的坑。附完整决策思路。" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%23fff' d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z'/></svg>" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg height="26" viewBox="0 0 16 16" width="26" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+      GitHub 新手村
+    </a>
+    <div class="nav-links">
+      <a href="index.html">🏠 主页</a>
+      <a href="#idea">想法</a>
+      <a href="#choice">技术选型</a>
+      <a href="#build">动手做</a>
+      <a href="#polish">细节打磨</a>
+      <a href="#launch">上线</a>
+      <a href="#recap">复盘</a>
+      <a href="ai-tools.html">AI 编程工具</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="crumbs"><a href="index.html">主页</a><span class="sep">/</span>专题实战 3</div>
+  <h1>🧰 从零到上线自己的工具站</h1>
+  <p class="sub">
+    这一章不是虚构的练习，而是一次<b>真实复盘</b>：一个 20 个工具、约 10 万行访问的在线工具站
+    是怎么从一句"给博客读者做点小工具"长出来的。你会看到每个关键决策是怎么做的、踩了哪些坑、
+    哪些功夫被证明是白费的。看完你完全可以照着做自己的版本。
+  </p>
+  <span class="req">✅ 前置要求：已完成主页教程（会建仓库、传文件）＋ <a href="lab-pages.html" style="color:inherit;text-decoration:underline">实战 1（Pages 建站）</a>。会用 AI 编程工具更佳。</span>
+</header>
+
+<section class="block" id="idea">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Step 1</span>
+      <h2>从一个"顺手"的想法开始</h2>
+      <p>工具站的起点不是"我要做个大网站"，而是一个小到不能再小的念头：</p>
+    </div>
+    <div class="tip blue">💡 起点案例：「我博客的读者经常要查时间戳、转 JSON，每次都要去广告满天飞的在线工具站——不如自己做一个干净的，顺手挂在我域名下。」</div>
+    <p>注意这个起点有三个特征，这决定了项目能不能活下去：</p>
+    <ul>
+      <li><b>自己会用</b>——做给自己用的工具最不容易烂尾，因为你自己就是第一个用户</li>
+      <li><b>颗粒度小</b>——"一个 JSON 格式化页面"一周内能做完，"一个开发者平台"永远做不完</li>
+      <li><b>可生长</b>——第一个工具做完就是完整可用的网站，之后每个工具都是增量</li>
+    </ul>
+    <div class="tip orange">⚠️ 反面教材：一上来就规划"我要做 50 个工具、用户系统、会员付费"。这种规划在第一周就会把你压垮。真实路径是：先上 1 个，用起来，缺什么加什么——案例里的工具站就是这样从 1 个长到 20 个的。</div>
+  </div>
+</section>
+
+<section class="block alt" id="choice">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Step 2</span>
+      <h2>技术选型：为什么是"纯前端、零构建"</h2>
+      <p>做工具站前必须回答一个问题：数据在哪处理？这决定了整个项目的命运。</p>
+    </div>
+    <div class="vs-grid">
+      <div class="vs-card">
+        <h3>🖥️ 纯前端（推荐起步）</h3>
+        <p class="tag">HTML + CSS + JS，无需后端</p>
+        <ul>
+          <li>数据全部在<b>用户浏览器里</b>处理，天然"隐私友好"（JSON、密码这类敏感输入不出浏览器）</li>
+          <li>托管成本为零：GitHub Pages / Vercel / Cloudflare 全部免费</li>
+          <li>没有服务器就没有服务器要维护——不会被入侵、不用打补丁、不怕被刷流量</li>
+          <li>缺点：能力边界 = 浏览器边界（做不了真正的用户系统、定时任务）</li>
+        </ul>
+      </div>
+      <div class="vs-mid">VS</div>
+      <div class="vs-card">
+        <h3>🗄️ 带后端</h3>
+        <p class="tag">需要服务器 / 数据库</p>
+        <ul>
+          <li>能做用户账号、数据存储、定时任务、调用 AI</li>
+          <li>代价：要管数据库、防注入、防滥用、备份……每一项都是长期负担</li>
+          <li>适合场景：<b>数据需要多设备同步</b>或<b>需要服务端算力</b>时再上</li>
+          <li>新手陷阱：为了"显得专业"先搭后端，结果工具还没做出来先被运维劝退</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tip green">✅ 实战结论：工具站 90% 的需求（格式化、转换、生成、编解码）纯前端就够。案例里唯一需要后端的"跨设备书签同步"是后来单独拆出来的另一个项目，而不是一开始就堆在工具站里。<b>按需生长 &gt; 一步到位。</b></div>
+  </div>
+</section>
+
+<section class="block" id="build">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Step 3</span>
+      <h2>动手做：第一个工具的正确姿势</h2>
+      <p>选一个最简单的入手——推荐 <b>JSON 格式化</b>，30 行代码就能用，而且立刻能自测对错。</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#238636,#3fb950)">A</div>
+        <div class="step-card">
+          <h3>先立骨架：一个页面一个工具</h3>
+          <p>别急着做"工具集框架"。就一个 <code>index.html</code>，一个工具，能用为先。案例里的做法是后来才抽象出"标签页切换"的——当你有第 3 个工具时再抽象，抽象时机才对。</p>
+          <div class="tip blue">💡 经验法则：<b>事不过三，三再抽象。</b>重复第三次再提取公共代码，避免为不存在的需求做设计。</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#1f6feb,#58a6ff)">B</div>
+        <div class="step-card">
+          <h3>核心逻辑 30 行，剩下的是体验</h3>
+          <p>JSON 格式化的核心就一句 <code>JSON.parse</code> + <code>JSON.stringify</code>。但让用户"愿意再来"，靠的是：错误提示<b>告诉用户错在第几行</b>、按钮点击有反馈、输入框会自动聚焦。这些"体验细节"才是工具站的护城河。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#8957e5,#bc8cff)">C</div>
+        <div class="step-card">
+          <h3>用 AI 编程工具加速，但自己当验收员</h3>
+          <p>让 AI 生成第一版代码完全没问题，但有两件事必须自己做：<b>① 每个功能亲手测一遍边界情况</b>（空输入、超长输入、中文、emoji）；<b>② 安全底线自己把关</b>——凡是把用户输入显示到页面上的地方都要防 XSS，案例里用 DOMPurify 过滤了所有富文本渲染。</p>
+          <div class="tip orange">⚠️ 真实踩坑：案例中一个"复制成功"的按钮，最初在非 HTTPS 环境下静默失败（剪贴板 API 需要安全上下文）。AI 生成的代码在理想环境下都是对的，<b>坑都在边界上</b>。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="polish">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Step 4</span>
+      <h2>细节打磨：从"能用"到"愿意推荐"</h2>
+      <p>工具站之间的差距，90% 在这些看不见的地方。按投入产出比排序：</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#238636,#3fb950)">A</div>
+        <div class="step-card">
+          <h3>深浅色主题 + 记住用户偏好</h3>
+          <p>跟随系统 <code>prefers-color-scheme</code> 自动切换，用户手动选过就记住（localStorage）。这是现代网页的"及格线"。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#1f6feb,#58a6ff)">B</div>
+        <div class="step-card">
+          <h3>离线缓存（Service Worker）</h3>
+          <p>加一个几十行的 Service Worker，用户第二次访问后<b>断网也能用</b>。注意一个新手必踩的坑：改了代码必须递增缓存版本号，否则老用户永远拿到旧文件——案例作者忘过不止一次。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#8957e5,#bc8cff)">C</div>
+        <div class="step-card">
+          <h3>无障碍与细节</h3>
+          <p>键盘能操作（Tab + 方向键切换工具）、状态提示用 <code>aria-live</code>、触控目标别小于 32px、数字用等宽字体（时间戳跳动不抖）。这些单看都是小事，加起来就是"这个站很专业"的体感。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="launch">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">Step 5</span>
+      <h2>上线：免费、绑域名、进可在 Vercel</h2>
+      <p>发布路径和 <a href="lab-pages.html" style="color:inherit;text-decoration:underline">实战 1</a> 一样从 GitHub Pages 开始，但工具站流量上来后有更优解：</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#238636,#3fb950)">A</div>
+        <div class="step-card">
+          <h3>第一步：GitHub Pages（零成本验证）</h3>
+          <p>仓库 Settings → Pages → 选 main 分支。1 分钟上线，够用很久。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#1f6feb,#58a6ff)">B</div>
+        <div class="step-card">
+          <h3>第二步：绑定自己的域名</h3>
+          <p>买个域名（几十元/年），DNS 加一条 CNAME 指向你的 Pages 地址。从此 <code>tools.你的域名.top</code> 就是工具站入口，还自带 CDN。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:linear-gradient(135deg,#8957e5,#bc8cff)">C</div>
+        <div class="step-card">
+          <h3>第三步：迁 Vercel（要动态能力时）</h3>
+          <p>Vercel 免费、推代码自动部署、支持 Serverless——案例的工具站后期就是这样迁的，顺带把博客、教程、其他工具全部挂成 <code>xxx.你的域名</code> 的子域名，形成自己的"产品矩阵"。</p>
+          <div class="tip blue">💡 迁移提醒：域名变更后记得全站搜索旧地址（og:url、canonical、README、页脚），漏一处就是死链。案例迁移时就靠 <code>grep github.io</code> 抓出了 5 处遗漏。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="recap">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="kicker">复盘</span>
+      <h2>如果重来一次，作者会改什么</h2>
+      <p>真实复盘的价值在踩坑。以下每条都有真实代价：</p>
+    </div>
+    <ul>
+      <li><b>一开始就该用单文件结构</b>——后期 20 个工具挤在一个 HTML 里，重构花了整整一轮优化才理顺</li>
+      <li><b>缓存版本号应该自动化</b>——靠人肉记得改版本号，用户反馈"看不到新功能"排查了半小时，发现是自己忘了改</li>
+      <li><b>每个工具上线前跑一遍边界清单</b>——空输入、超长输入、中文 emoji、离线状态，四项十秒钟，能挡住 80% 的尴尬</li>
+      <li><b>做对的事</b>：坚持"数据不上传"的承诺（哪怕加后端能省事），是工具站最值的口碑投资</li>
+    </ul>
+    <p style="margin-top:16px">现在轮到你了。你的第一个工具是什么？任何你手动重复过三次的操作，都值得变成一个页面。</p>
+    <p style="margin-top:16px">
+      <a class="btn btn-primary" href="https://toolbox.adcakeyuan.top" target="_blank" rel="noopener noreferrer">🔧 看看案例成品（20 个工具）</a>
+      <a class="btn" href="https://github.com/huqinyuan923-hue/toolbox" target="_blank" rel="noopener noreferrer">📁 源码仓库（MIT 协议，随便抄）</a>
+    </p>
+  </div>
+</section>
+
+<div class="pager">
+  <a href="lab-first-pr.html">
+    <div class="dir">← 上一个实战</div>
+    <div class="t">提交你人生第一个 PR</div>
+  </a>
+  <a class="next" href="ai-tools.html">
+    <div class="dir">下一篇专题 →</div>
+    <div class="t">🤖 AI 编程工具指南</div>
+  </a>
+</div>
+
+<footer>
+  <p>🧰 工具站的故事讲完了，下一个故事的主角是你。</p>
+  <p>用 <span class="heart">❤</span> 制作 · 复盘内容来自真实项目</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

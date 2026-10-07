@@ -1,2 +1,4 @@
 .shots/
 .mimosa/
+.vercel
+.env*.local
