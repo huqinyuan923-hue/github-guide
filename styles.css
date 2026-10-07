@@ -389,7 +389,7 @@ section.block.alt { background: var(--bg-soft); border-top: 1px solid var(--bord
 .steps { display: grid; gap: 20px; position: relative; }
 .step {
   display: grid;
-  grid-template-columns: 52px 1fr;
+  grid-template-columns: 52px minmax(0, 1fr);
   gap: 20px;
   position: relative;
 }
@@ -416,6 +416,7 @@ section.block.alt { background: var(--bg-soft); border-top: 1px solid var(--bord
 }
 .step-card {
   background: var(--bg-card);
+  min-width: 0;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 22px 24px;
@@ -596,7 +597,7 @@ footer p + p { margin-top: 6px; }
 @media (max-width: 760px) {
   .vs-grid { grid-template-columns: 1fr; }
   .vs-mid { padding: 4px 0; }
-  .step { grid-template-columns: 40px 1fr; gap: 14px; }
+  .step { grid-template-columns: 40px minmax(0, 1fr); gap: 14px; }
   .step-num { width: 40px; height: 40px; font-size: 15px; border-radius: 11px; }
   .step:not(:last-child)::before { left: 19px; top: 44px; }
   .step-card { padding: 18px; }
