@@ -8,15 +8,18 @@
 <link rel="stylesheet" href="styles.css" />
 <style>
   /* 进站动画：git init 新手村（每会话一次） */
-  #boot{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:#0d1117;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;animation:bootOut .5s ease 1.8s forwards}
-  #boot .b-logo{color:#58a6ff;font-size:clamp(26px,5vw,46px);font-weight:700;animation:bIn .5s ease both}
+  #boot{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:radial-gradient(ellipse 80% 55% at 50% 28%,rgba(88,166,255,.13),transparent),#0d1117;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;animation:bootOut .5s ease 2.1s forwards}
+  #boot .b-octo{font-size:56px;animation:bIn .55s cubic-bezier(.34,1.56,.64,1) both;filter:drop-shadow(0 0 18px rgba(88,166,255,.6))}
+  #boot .b-logo{font-size:clamp(26px,5vw,46px);font-weight:700;background:linear-gradient(100deg,#58a6ff,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent;animation:bIn .55s ease .15s both}
   #boot .b-line{color:#8b949e;font-size:13px;letter-spacing:.08em;opacity:0;animation:bIn .3s ease both}
-  #boot .b-line:nth-of-type(1){animation-delay:.25s}
-  #boot .b-line:nth-of-type(2){animation-delay:.55s}
-  #boot .b-line:nth-of-type(3){animation-delay:.85s}
+  #boot .b-line:nth-of-type(1){animation-delay:.45s}
+  #boot .b-line:nth-of-type(2){animation-delay:.75s}
+  #boot .b-line:nth-of-type(3){animation-delay:1.05s}
   #boot .b-line .ok{color:#3fb950}
-  #boot .b-cmd{color:#e6edf3;font-size:15px;opacity:0;animation:bIn .3s ease 1.15s both}
+  #boot .b-cmd{color:#e6edf3;font-size:15px;opacity:0;animation:bIn .3s ease 1.35s both}
   #boot .b-cmd .p{color:#3fb950}
+  #boot .b-cmd .cur{display:inline-block;width:9px;height:17px;background:#58a6ff;vertical-align:middle;margin-left:2px;animation:blink .6s step-end infinite}
+  @keyframes blink{50%{opacity:0}}
   @keyframes bIn{from{opacity:0;transform:translateY(8px)}}
   @keyframes bootOut{to{opacity:0;visibility:hidden;transform:scale(1.03)}}
   @media (prefers-reduced-motion:reduce){#boot{display:none}}
@@ -27,11 +30,12 @@
 
 <!-- 进站引导（每会话一次） -->
 <div id="boot" aria-hidden="true">
+  <div class="b-octo">🐙</div>
   <div class="b-logo">GitHub 新手村</div>
   <div class="b-line">&gt; git init your-journey <span class="ok">OK</span></div>
   <div class="b-line">&gt; checkout -b beginner <span class="ok">OK</span></div>
   <div class="b-line">&gt; merge --from 零基础 → 入门 <span class="ok">OK</span></div>
-  <div class="b-cmd"><span class="p">$</span> 旅途开始，欢迎来到新手村_</div>
+  <div class="b-cmd"><span class="p">$</span> 旅途开始，欢迎来到新手村<span class="cur"></span></div>
 </div>
 <script>try{if(sessionStorage.getItem('boot-seen')){var b=document.getElementById('boot');b&&(b.style.display='none')}else{sessionStorage.setItem('boot-seen','1')}}catch(e){}</script>
 
